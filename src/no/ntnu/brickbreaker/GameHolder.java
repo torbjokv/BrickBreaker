@@ -1,4 +1,4 @@
-package no.ntnu.brickbreaker.game;
+package no.ntnu.brickbreaker;
 
 import org.anddev.andengine.engine.Engine;
 import org.anddev.andengine.engine.camera.Camera;
@@ -18,7 +18,7 @@ import org.anddev.andengine.ui.activity.BaseGameActivity;
 import android.view.Display;
 
 
-public class GameMain extends BaseGameActivity {
+public class GameHolder extends BaseGameActivity {
 
 	private static int CAMERA_HEIGHT = 320;
 	private static int CAMERA_WIDTH = 480;
