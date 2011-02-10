@@ -1,4 +1,4 @@
-package no.ntnu.jump;
+package no.ntnu.brickbreaker.game;
 
 import org.anddev.andengine.engine.Engine;
 import org.anddev.andengine.engine.camera.Camera;
@@ -14,14 +14,6 @@ public class Game extends BaseGameActivity{
 	private TiledTextureRegion mPlayerTextureRegion;
 	private Texture mTexture;
 	
-
-
-	public static Game getInstance(BaseGameActivity bga){
-		if(instance == null){
-			return new Game(bga);
-		}
-		return instance;
-	}
 
 
 	@Override

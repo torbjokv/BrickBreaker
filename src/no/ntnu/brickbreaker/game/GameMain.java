@@ -1,4 +1,4 @@
-package no.ntnu.jump;
+package no.ntnu.brickbreaker.game;
 
 import org.anddev.andengine.engine.Engine;
 import org.anddev.andengine.engine.camera.Camera;
@@ -21,15 +21,9 @@ import android.view.Display;
 public class GameMain extends BaseGameActivity {
 
 	private static int CAMERA_HEIGHT = 320;
-
 	private static int CAMERA_WIDTH = 480;
-
 	private Camera mCamera;
-
 	private TiledTextureRegion mPlayerTextureRegion;
-
-	
-	
 	private Texture mTexture;
 
 	@Override

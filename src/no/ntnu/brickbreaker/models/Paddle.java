@@ -1,4 +1,6 @@
-package no.ntnu.jump;
+package no.ntnu.brickbreaker.models;
+
+import no.ntnu.brickbreaker.game.GameMain;
 
 import org.anddev.andengine.entity.sprite.AnimatedSprite;
 import org.anddev.andengine.input.touch.TouchEvent;
