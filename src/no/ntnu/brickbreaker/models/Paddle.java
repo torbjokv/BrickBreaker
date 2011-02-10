@@ -1,6 +1,6 @@
 package no.ntnu.brickbreaker.models;
 
-import no.ntnu.brickbreaker.game.GameMain;
+import no.ntnu.brickbreaker.GameHolder;
 
 import org.anddev.andengine.entity.sprite.AnimatedSprite;
 import org.anddev.andengine.input.touch.TouchEvent;
@@ -23,7 +23,7 @@ public class Paddle extends AnimatedSprite{
 	}
 	
 	public boolean onAreaTouched(TouchEvent sceneTouchEvent, float touchAreaLocalX, float touchAreaLocalY) {
-		this.setPosition(sceneTouchEvent.getX() - this.getWidth() / 2, GameMain.getCAMERA_HEIGHT()-30);
+		this.setPosition(sceneTouchEvent.getX() - this.getWidth() / 2, GameHolder.getCAMERA_HEIGHT()-30);
 		return true;
 	}
 }
