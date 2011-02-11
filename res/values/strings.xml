@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="hello">Hello World, runForIt!</string>
-    <string name="app_name">Jump</string>
+    <string name="app_name">BrickBreaker!</string>
+<string-array name="menu_items">
+	<item>Continue Game</item>
+	<item>New Game</item>
+    <item>Exit</item>
+</string-array>
 </resources>

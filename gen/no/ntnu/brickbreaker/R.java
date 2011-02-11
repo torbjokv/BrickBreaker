@@ -8,6 +8,9 @@
 package no.ntnu.brickbreaker;
 
 public final class R {
+    public static final class array {
+        public static final int menu_items=0x7f050000;
+    }
     public static final class attr {
     }
     public static final class drawable {

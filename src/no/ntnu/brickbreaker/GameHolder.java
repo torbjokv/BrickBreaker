@@ -1,6 +1,5 @@
 package no.ntnu.brickbreaker;
 
-import android.content.Intent;
 import android.database.Observable;
 
 
