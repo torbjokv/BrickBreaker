@@ -36,7 +36,7 @@ public class Ball extends AnimatedSprite {
 
 	}
 
-	public void paddleReverse(){
+	public void verticalReverse(){
 		this.setVelocityY(-velocity-20);
 
 	}
