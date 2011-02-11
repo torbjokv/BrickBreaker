@@ -29,4 +29,14 @@ public class Ball extends AnimatedSprite {
 
 		super.onManagedUpdate(pSecondsElapsed);
 	}
+	
+	public void wallReverse(){
+		this.setVelocity(-this.getVelocityX(), this.getVelocityY());
+
+	}
+
+	public void paddleReverse(){
+		this.setVelocity(this.getVelocityX()+20, -this.getVelocityY()+20);
+
+	}
 }
