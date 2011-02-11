@@ -28,8 +28,8 @@ import android.view.Display;
 import no.ntnu.brickbreaker.models.*;
 
 public class Game extends BaseGameActivity{
-	private static int CAMERA_HEIGHT = 320;
-	private static int CAMERA_WIDTH = 480;
+	private static int CAMERA_HEIGHT = 480;
+	private static int CAMERA_WIDTH = 800;
 	private Camera mCamera;
 	
 	private TextureRegion paddleTextureRegion;
