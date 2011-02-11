@@ -32,12 +32,12 @@ public class Ball extends AnimatedSprite {
 	}
 	
 	public void wallReverse(){
-		this.setVelocity(-this.getVelocityX(), this.getVelocityY());
+		this.setVelocityX(-velocity);
 
 	}
 
 	public void paddleReverse(){
-		this.setVelocity(this.getVelocityX()+20, -this.getVelocityY()+20);
+		this.setVelocityY(-velocity-20);
 
 	}
 }

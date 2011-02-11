@@ -8,6 +8,7 @@ import org.anddev.andengine.engine.handler.IUpdateHandler;
 import org.anddev.andengine.engine.options.EngineOptions;
 import org.anddev.andengine.engine.options.EngineOptions.ScreenOrientation;
 import org.anddev.andengine.engine.options.resolutionpolicy.RatioResolutionPolicy;
+import org.anddev.andengine.entity.primitive.Rectangle;
 import org.anddev.andengine.entity.scene.Scene;
 import org.anddev.andengine.entity.scene.background.ColorBackground;
 import org.anddev.andengine.entity.sprite.AnimatedSprite;
@@ -33,7 +34,7 @@ public class Game extends BaseGameActivity{
 	private Camera mCamera;
 	
 	private TextureRegion paddleTextureRegion;
-//	private TextureRegion brickTextureRegion;
+	private TextureRegion brickTextureRegion;
 	private TiledTextureRegion ballTextureRegion;
 	
 	private Texture mTexture;
@@ -57,13 +58,15 @@ public Engine onLoadEngine() {
 		
 		this.paddleTextureRegion = TextureRegionFactory.createFromAsset(this.mTexture, this, "paddle.png", 0, 0);
 		this.ballTextureRegion = TextureRegionFactory.createTiledFromAsset(this.mTexture, this, "ball.png", 0, 0, 1, 1);
-//		this.brickTextureRegion = TextureRegionFactory.createFromAsset(this.mTexture, this, "brick.png", 0, 0);
+		this.brickTextureRegion = TextureRegionFactory.createFromAsset(this.mTexture, this, "brick.png", 0, 0);
 		
 		this.mEngine.getTextureManager().loadTexture(this.mTexture);
 	}
 
 	@Override
 	public Scene onLoadScene() {
+		
+		
 		this.mEngine.registerUpdateHandler(new FPSLogger());
 
 		final Scene scene = new Scene(1);
@@ -71,20 +74,28 @@ public Engine onLoadEngine() {
 
 //		this.mPhysicsWorld = new PhysicsWorld(new Vector2(0, SensorManager.GRAVITY_EARTH), false);
 		
-		/* Running man */
-//		final AnimatedSprite runningman = new AnimatedSprite(200, 180, this.mPlayerTextureRegion);
-		final Paddle paddle = new Paddle(CAMERA_WIDTH/2, CAMERA_HEIGHT-80, this.paddleTextureRegion);
-//		final Brick[][] bricks = new Brick[5][2];
-			
 		final Ball ball = new Ball(CAMERA_WIDTH/2, CAMERA_HEIGHT-82, this.ballTextureRegion);
 		
-		scene.getTopLayer().addEntity(paddle);
-		scene.getTopLayer().addEntity(ball);
+		final Paddle paddle = new Paddle(CAMERA_WIDTH/2, CAMERA_HEIGHT-80, this.paddleTextureRegion);
+		
+		final Rectangle[][] bricks = new Rectangle[5][5];
+		
+		for (int i = 0; i < bricks.length; i++) {
+			for (int j = 0; j < bricks[0].length; j++) {
+				bricks[i][j]= new Rectangle(CAMERA_WIDTH-4*(CAMERA_WIDTH/5)+i*25, CAMERA_HEIGHT-3*(CAMERA_HEIGHT/5)-j*20, 16, 16);
+			}
+		}
+	
+		for (int i = 0; i < bricks.length; i++) {
+			for (int j = 0; j < bricks[0].length; j++) {
+				scene.getTopLayer().addEntity(bricks[i][j]);
+			}
+		}
 		
 //		scene.registerUpdateHandler(this.mPhysicsWorld);
-		
+		scene.getTopLayer().addEntity(paddle);
+		scene.getTopLayer().addEntity(ball);
 		scene.registerTouchArea(paddle);
-		
 		
 		/* The actual collision-checking. */
 		scene.registerUpdateHandler(new IUpdateHandler() {
