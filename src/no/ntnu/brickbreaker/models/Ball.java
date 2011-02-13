@@ -1,6 +1,5 @@
 package no.ntnu.brickbreaker.models;
 
-import no.ntnu.brickbreaker.GameHolder;
 import no.ntnu.brickbreaker.game.Game;
 
 import org.anddev.andengine.entity.sprite.AnimatedSprite;
@@ -31,13 +30,8 @@ public class Ball extends AnimatedSprite {
 		super.onManagedUpdate(pSecondsElapsed);
 	}
 	
-	public void wallReverse(){
-		this.setVelocityX(-velocity);
-
+	public void paddelBounce(){
+		this.setVelocity(this.getVelocityX(), -this.getVelocityY());
 	}
 
-	public void verticalReverse(){
-		this.setVelocityY(-velocity-20);
-
-	}
 }

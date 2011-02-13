@@ -1,9 +1,10 @@
 package no.ntnu.brickbreaker;
 
-import android.database.Observable;
+import java.util.Observable;
 
 
-public class GameHolder extends Observable<GameObserver>{
+
+public class GameHolder extends Observable {
 	
 	private static GameHolder instance = new GameHolder();
 	
@@ -19,7 +20,7 @@ public class GameHolder extends Observable<GameObserver>{
 
 	public static GameHolder getInstance() {
 		if(instance == null) {
-			return new GameHolder();
+			instance = new GameHolder();
 		}
 		return instance;
 	}
@@ -42,9 +43,11 @@ public class GameHolder extends Observable<GameObserver>{
 
 	public void setGameState(GameState gameState) {
 		this.gameState = gameState;
+		notifyObservers();
 	}
 
 	public GameState getGameState() {
+		notifyAll();
 		return gameState;
 	}
 	
@@ -71,6 +74,5 @@ public class GameHolder extends Observable<GameObserver>{
 	public GameState getInGameState() {
 		return inGameState;
 	}
-	
 	
 }
