@@ -10,7 +10,8 @@ public class Brick extends Rectangle{
 	}
 
 	protected void onManagedUpdate(final float pSecondsElapsed) {
-			this.setColor(1.0f,1.0f,1.0f);
+//			if(this.collidesWith(pOtherShape))
+
 	}
 
 }

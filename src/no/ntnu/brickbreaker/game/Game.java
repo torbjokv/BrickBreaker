@@ -108,9 +108,10 @@ public class Game extends BaseGameActivity implements IOnSceneTouchListener{
 							for (int j = 0; j < bricks[0].length; j++) {
 								scene.setBackground(new ColorBackground(0f, 0f, 0f));
 								if(ball.collidesWith(bricks[i][j])) {
-									
+									bricks[i][j].setPosition(CAMERA_HEIGHT+20, CAMERA_WIDTH+20);
 									scene.getTopLayer().removeEntity(bricks[i][j]);
 									ball.bounceWithRectangle(bricks[i][j]);
+									
 								}
 							}
 						}
