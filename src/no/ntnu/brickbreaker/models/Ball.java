@@ -37,21 +37,21 @@ public class Ball extends AnimatedSprite {
 	}
 	
 	public void bounceWithRectangle(Rectangle rectangle){
-		float ballPositionX = this.getX();
-		float ballPositionY = this.getY();
-		float centerVertical = rectangle.getX();
-		float westWall = rectangle.getX() - rectangle.getWidth()/2 - this.getWidth()/2;
-		float eastWall = rectangle.getX() + rectangle.getWidth()/2 + this.getWidth()/2;
-		float centerHorozontal = rectangle.getY();
-		float northWall = rectangle.getY() - rectangle.getHeight()/2 - this.getHeight()/2;
-		float southWall = rectangle.getY() + rectangle.getHeight()/2 + this.getHeight()/2;
-		
-		if(ballPositionX >= westWall || ballPositionX <= eastWall) {
-			this.setVelocityX(-this.getVelocityX());
-		} 
-		else {
+//		float ballPositionX = this.getX();
+//		float ballPositionY = this.getY();
+//		float centerVertical = rectangle.getX();
+//		float westWall = rectangle.getX() - rectangle.getWidth()/2 - this.getWidth()/2;
+//		float eastWall = rectangle.getX() + rectangle.getWidth()/2 + this.getWidth()/2;
+//		float centerHorozontal = rectangle.getY();
+//		float northWall = rectangle.getY() - rectangle.getHeight()/2 - this.getHeight()/2;
+//		float southWall = rectangle.getY() + rectangle.getHeight()/2 + this.getHeight()/2;
+//		
+//		if(ballPositionX >= westWall || ballPositionX <= eastWall) {
+//			this.setVelocityX(-this.getVelocityX());
+//		} 
+//		else {
 			this.setVelocityY(-this.getVelocityY());
-		}
+//		}
 	}
 
 }
