@@ -97,19 +97,21 @@ public class Game extends BaseGameActivity implements IOnSceneTouchListener{
 			public void reset() { }
 
 			public void onUpdate(final float pSecondsElapsed) {
-					for (int i = 0; i < bricks.length; i++) {
-						for (int j = 0; j < bricks[0].length; j++) {
-							scene.setBackground(new ColorBackground(0f, 0f, 0f));
-							if(ball.collidesWith(bricks[i][j])) {
-								scene.getTopLayer().removeEntity(bricks[i][j]);
+					if(ball.collidesWith(paddle)) {
+						ball.bounce();
+					}
+					else if (ball.getY() >= Game.getCAMERA_HEIGHT() - 30) {
+						scene.setBackground(new ColorBackground(255f, 0f, 0f));
+					}
+					else {
+						for (int i = 0; i < bricks.length; i++) {
+							for (int j = 0; j < bricks[0].length; j++) {
+								scene.setBackground(new ColorBackground(0f, 0f, 0f));
+								if(ball.collidesWith(bricks[i][j])) {
+									scene.getTopLayer().removeEntity(bricks[i][j]);
+								}
 							}
 						}
-					}
-					if(ball.collidesWith(paddle)) {
-						ball.paddelBounce();
-					}
-					if(ball.getY() >= Game.getCAMERA_HEIGHT() - 30) {
-						scene.setBackground(new ColorBackground(255f, 0f, 0f));
 					}
 			}
 		});

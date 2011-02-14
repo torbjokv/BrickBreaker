@@ -30,7 +30,7 @@ public class Ball extends AnimatedSprite {
 		super.onManagedUpdate(pSecondsElapsed);
 	}
 	
-	public void paddelBounce(){
+	public void bounce(){
 		this.setVelocity(this.getVelocityX(), -this.getVelocityY());
 	}
 
