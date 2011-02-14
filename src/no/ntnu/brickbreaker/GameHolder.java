@@ -2,6 +2,9 @@ package no.ntnu.brickbreaker;
 
 import java.util.Observable;
 
+import android.app.Activity;
+import android.content.Intent;
+
 
 
 public class GameHolder extends Observable {
@@ -12,6 +15,10 @@ public class GameHolder extends Observable {
 	private GameState inGameState = new InGameState(this);
 	private GameState newGameState = new NewGameState(this);
 	private GameState pausedGameState = new PausedGameState(this);
+	
+	private Intent gameIntent;
+	private Intent menuIntent;
+	private Activity gameActivity;
 	
 	private GameHolder() {
 		super();
@@ -42,12 +49,13 @@ public class GameHolder extends Observable {
 	}
 
 	public void setGameState(GameState gameState) {
+
 		this.gameState = gameState;
-		notifyObservers();
+
+		this.notifyObservers();
 	}
 
 	public GameState getGameState() {
-		notifyAll();
 		return gameState;
 	}
 	
@@ -60,6 +68,7 @@ public class GameHolder extends Observable {
 	}
 
 	public GameState getPausedGameState() {
+		System.out.println("Paused!");
 		return pausedGameState;
 	}
 
@@ -73,6 +82,30 @@ public class GameHolder extends Observable {
 
 	public GameState getInGameState() {
 		return inGameState;
+	}
+
+	public void setMenuIntent(Intent menuIntent) {
+		this.menuIntent = menuIntent;
+	}
+
+	public Intent getMenuIntent() {
+		return menuIntent;
+	}
+	
+	public Intent getGameIntent() {
+		return gameIntent;
+	}
+
+	public void setGameIntent(Intent gameIntent) {
+		this.gameIntent = gameIntent;
+	}
+
+	public void setGameActivity(Activity gameActivity) {
+		this.gameActivity = gameActivity;
+	}
+
+	public Activity getGameActivity() {
+		return gameActivity;
 	}
 	
 }

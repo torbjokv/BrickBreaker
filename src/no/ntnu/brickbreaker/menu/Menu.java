@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class Menu extends Activity implements Observer {
 	private GameHolder gameHolder;
@@ -33,7 +34,9 @@ public class Menu extends Activity implements Observer {
 		@Override
 		public void onClick(View v) {
 	        Intent gameIntent = new Intent(v.getContext(), Game.class);
+	        gameHolder.setGameIntent(gameIntent);
 	        startActivity(gameIntent);
+	        gameHolder.setGameState(gameHolder.getInGameState());
 		}
 	  });
   	    
@@ -42,7 +45,14 @@ public class Menu extends Activity implements Observer {
   	   resumeButton.setOnClickListener(new OnClickListener() {
 		@Override
 		public void onClick(View v) {
-	        System.out.println("Not implemented");
+			if(gameHolder.getGameState() == gameHolder.getNewGameState()) {
+				Toast.makeText(v.getContext(), "There is no game to resume.", 3).show();
+			} else {
+				Toast.makeText(v.getContext(), "Not implemented.", 3).show();
+				//startActivityIfNeeded(gameHolder.getGameIntent(), Intent.FLAG_ACTIVITY_SINGLE_TOP);
+//				startActivityFromChild(gameHolder.getGameActivity(), gameHolder.getGameIntent(), Intent.FLAG_ACTIVITY_SINGLE_TOP);
+//				gameHolder.setGameState(gameHolder.getInGameState());
+			}
 		}
 	  });
   	    
@@ -59,8 +69,8 @@ public class Menu extends Activity implements Observer {
 	
 	@Override
 	public void update(Observable observable, Object data) {
-		// TODO Auto-generated method stub
-		
+		GameHolder gameHolder = (GameHolder)observable;
+		gameHolder.getGameState();
 	}
 	
 }

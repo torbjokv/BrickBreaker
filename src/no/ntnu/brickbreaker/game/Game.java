@@ -1,5 +1,9 @@
 package no.ntnu.brickbreaker.game;
 
+import java.util.Observable;
+import java.util.Observer;
+
+import no.ntnu.brickbreaker.GameHolder;
 import no.ntnu.brickbreaker.models.Ball;
 import no.ntnu.brickbreaker.models.Brick;
 import no.ntnu.brickbreaker.models.Paddle;
@@ -20,11 +24,12 @@ import org.anddev.andengine.opengl.texture.TextureOptions;
 import org.anddev.andengine.opengl.texture.region.TextureRegionFactory;
 import org.anddev.andengine.opengl.texture.region.TiledTextureRegion;
 import org.anddev.andengine.ui.activity.BaseGameActivity;
-import org.anddev.andengine.util.constants.TimeConstants;
 
+import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.view.Display;
 
-public class Game extends BaseGameActivity implements IOnSceneTouchListener{
+public class Game extends BaseGameActivity implements IOnSceneTouchListener, Observer{
 	private static int CAMERA_HEIGHT = 480;
 	private static int CAMERA_WIDTH = 800;
 	private Camera mCamera;
@@ -35,6 +40,8 @@ public class Game extends BaseGameActivity implements IOnSceneTouchListener{
 	private Texture paddleTexture;
 	private Texture ballTexture;
 	private Paddle paddle;
+	private GameHolder gameHolder;
+	private Object mCurViewMode;
 
 
 
@@ -49,6 +56,11 @@ public class Game extends BaseGameActivity implements IOnSceneTouchListener{
 
 	@Override
 	public void onLoadResources() {
+		
+		gameHolder = GameHolder.getInstance();
+		gameHolder.addObserver(this);
+		gameHolder.setGameActivity(this);
+		
 		this.ballTexture = new Texture(64, 64, TextureOptions.BILINEAR_PREMULTIPLYALPHA);
 		this.paddleTexture = new Texture(1024, 1024, TextureOptions.BILINEAR_PREMULTIPLYALPHA);
 
@@ -141,6 +153,15 @@ public class Game extends BaseGameActivity implements IOnSceneTouchListener{
 		paddle.setPosition(pSceneTouchEvent.getX() - paddle.getWidth() / 2, Game.getCAMERA_HEIGHT()-30);
 		return true;
 	}
+	
+	protected void onPause() {
+		super.onPause();
+		gameHolder.setGameState(gameHolder.getPausedGameState());
+	}
 
-
+	@Override
+	public void update(Observable observable, Object data) {
+		// TODO Auto-generated method stub
+		
+	}
 }
