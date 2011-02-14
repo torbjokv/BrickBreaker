@@ -6,39 +6,55 @@ import java.util.Observer;
 import no.ntnu.brickbreaker.GameHolder;
 import no.ntnu.brickbreaker.R;
 import no.ntnu.brickbreaker.game.Game;
-import android.app.ListActivity;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 
-public class Menu extends ListActivity implements Observer {
-	GameHolder gameHolder;
+public class Menu extends Activity implements Observer {
+	private GameHolder gameHolder;
+	private Button newGameButton;
+	private Button resumeButton;
+	private Button exitButton;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		gameHolder = GameHolder.getInstance();
 		gameHolder.addObserver(this);
 		
-		  super.onCreate(savedInstanceState);
-		
-		  String[] countries = getResources().getStringArray(R.array.menu_items);
-		  setListAdapter(new ArrayAdapter<String>(this, R.layout.menu, countries));
-		  
-		  ListView lv = getListView();
-		  lv.setTextFilterEnabled(true);
-		
-		  lv.setOnItemClickListener(new OnItemClickListener() {
-		    @Override
-			public void onItemClick(AdapterView<?> parent, View view,
-		        int position, long id) {
-		    	Intent gameIntent = new Intent(view.getContext(), Game.class);
-		        startActivity(gameIntent);
-		    }
-		  });
+  	    super.onCreate(savedInstanceState);
+  	    setContentView(R.layout.menu1);
+	  
+  	    newGameButton = (Button)this.findViewById(R.id.newGameButton);
+  	    
+  	    newGameButton.setOnClickListener(new OnClickListener() {
+		@Override
+		public void onClick(View v) {
+	        Intent gameIntent = new Intent(v.getContext(), Game.class);
+	        startActivity(gameIntent);
+		}
+	  });
+  	    
+  	    resumeButton = (Button)this.findViewById(R.id.resumeButton);
+	    
+  	   resumeButton.setOnClickListener(new OnClickListener() {
+		@Override
+		public void onClick(View v) {
+	        System.out.println("Not implemented");
+		}
+	  });
+  	    
+  	 exitButton = (Button)this.findViewById(R.id.exitButton);
+	    
+  	exitButton.setOnClickListener(new OnClickListener() {
+		@Override
+		public void onClick(View v) {
+	        finish();
+		}
+	  });
+  	   
 	}
 	
 	@Override

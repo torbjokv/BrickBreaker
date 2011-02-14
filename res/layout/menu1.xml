@@ -2,21 +2,25 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="fill_parent" 
               android:layout_height="fill_parent"
-              android:orientation="vertical" >
-    <ImageView android:id="@+id/ImageView02" android:layout_width="wrap_content" android:layout_height="wrap_content"></ImageView><ImageView android:id="@+id/ImageView01" android:layout_width="wrap_content" android:layout_height="wrap_content"></ImageView><ImageView android:id="@+id/ImageView03" android:layout_width="wrap_content" android:layout_height="wrap_content"></ImageView><TextView android:id="@+id/text"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:text="Hello, I am a TextView" />
-    <Button android:id="@+id/button" android:text="Hello, I am a Button" android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
-
-
-
-<Button android:text="@+id/Button01" android:id="@+id/Button01" android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
-<Button android:text="@+id/Button02" android:id="@+id/Button02" android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
-
-
-
-
+              android:orientation="vertical" 
+              android:gravity="center">
+              
+	
+	<Button android:id="@+id/newGameButton" 
+			android:text="New Game" 
+			android:layout_width="200px" 
+			android:layout_height="wrap_content">
+	</Button>
+	<Button android:text="Resume" 
+			android:id="@+id/resumeButton" 
+			android:layout_width="200px" 
+			android:layout_height="wrap_content">
+	</Button>
+	<Button android:text="Exit" 
+			android:id="@+id/exitButton" 
+			android:layout_width="200px" 
+			android:layout_height="wrap_content">
+	</Button>
 
 
 </LinearLayout>
