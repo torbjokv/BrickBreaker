@@ -85,18 +85,18 @@ public class Game extends BaseGameActivity implements IOnSceneTouchListener, Obs
 		scene.setBackground(new ColorBackground(0f, 0f, 0f));
 		scene.setOnSceneTouchListener(this);
 
-		final Ball ball = new Ball(CAMERA_WIDTH/2, CAMERA_HEIGHT-80, this.ballTextureRegion, mEngine);
+		final Ball ball = new Ball(CAMERA_WIDTH/2, CAMERA_HEIGHT-30-16, this.ballTextureRegion, mEngine);
 		ball.setVelocity(100.0f, 100.0f);
 
 		scene.getTopLayer().addEntity(ball);
 		
-		paddle = new Paddle(CAMERA_WIDTH/2, CAMERA_HEIGHT-30, 64, 16);
+		paddle = new Paddle(CAMERA_WIDTH/2, CAMERA_HEIGHT-50, CAMERA_HEIGHT/8, CAMERA_WIDTH/34);
 
 		final Brick[][] bricks = new Brick[5][5];
 
 		for (int i = 0; i < bricks.length; i++) {
 			for (int j = 0; j < bricks[0].length; j++) {
-				bricks[i][j]= new Brick(CAMERA_WIDTH-6*(CAMERA_WIDTH/6)+i*70, CAMERA_HEIGHT-4*(CAMERA_HEIGHT/5)-j*20, 30, 16);
+				bricks[i][j]= new Brick(CAMERA_WIDTH-6*(CAMERA_WIDTH/6)+i*70, CAMERA_HEIGHT-4*(CAMERA_HEIGHT/5)-j*20, CAMERA_HEIGHT/16, CAMERA_WIDTH/32);
 				scene.getTopLayer().addEntity(bricks[i][j]);
 			}
 		}
