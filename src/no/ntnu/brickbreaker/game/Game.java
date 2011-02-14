@@ -96,10 +96,11 @@ public class Game extends BaseGameActivity implements IOnSceneTouchListener, Obs
 
 		for (int i = 0; i < bricks.length; i++) {
 			for (int j = 0; j < bricks[0].length; j++) {
-				bricks[i][j]= new Brick(CAMERA_WIDTH-6*(CAMERA_WIDTH/6)+i*70, CAMERA_HEIGHT-4*(CAMERA_HEIGHT/5)-j*20, CAMERA_HEIGHT/16, CAMERA_WIDTH/32);
+				bricks[i][j]= new Brick(10+j*CAMERA_WIDTH/5, 10+i*CAMERA_HEIGHT/15 , CAMERA_HEIGHT/16, CAMERA_WIDTH/32);
 				scene.getTopLayer().addEntity(bricks[i][j]);
 			}
 		}
+		
 
 		scene.getTopLayer().addEntity(paddle);
 		scene.getTopLayer().addEntity(ball);
