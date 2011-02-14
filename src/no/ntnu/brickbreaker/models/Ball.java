@@ -2,6 +2,7 @@ package no.ntnu.brickbreaker.models;
 
 import no.ntnu.brickbreaker.game.Game;
 
+import org.anddev.andengine.entity.primitive.Rectangle;
 import org.anddev.andengine.entity.sprite.AnimatedSprite;
 import org.anddev.andengine.opengl.texture.region.TiledTextureRegion;
 
@@ -30,8 +31,22 @@ public class Ball extends AnimatedSprite {
 		super.onManagedUpdate(pSecondsElapsed);
 	}
 	
-	public void bounce(){
-		this.setVelocity(this.getVelocityX(), -this.getVelocityY());
+	public void bounceWithRectangle(Rectangle rectangle){
+		float ballPositionX = this.getX();
+		float ballPositionY = this.getY();
+		float centerVertical = rectangle.getX();
+		float westWall = rectangle.getX() - rectangle.getWidth()/2 - this.getWidth()/2;
+		float eastWall = rectangle.getX() + rectangle.getWidth()/2 + this.getWidth()/2;
+		float centerHorozontal = rectangle.getY();
+		float northWall = rectangle.getY() - rectangle.getHeight()/2 - this.getHeight()/2;
+		float southWall = rectangle.getY() + rectangle.getHeight()/2 + this.getHeight()/2;
+		
+		if(ballPositionX >= westWall || ballPositionX <= eastWall) {
+			this.setVelocityX(-this.getVelocityX());
+		} 
+		else {
+			this.setVelocityY(-this.getVelocityY());
+		}
 	}
 
 }
