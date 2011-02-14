@@ -2,16 +2,21 @@ package no.ntnu.brickbreaker.models;
 
 import no.ntnu.brickbreaker.game.Game;
 
+import org.anddev.andengine.engine.Engine;
 import org.anddev.andengine.entity.primitive.Rectangle;
 import org.anddev.andengine.entity.sprite.AnimatedSprite;
 import org.anddev.andengine.opengl.texture.region.TiledTextureRegion;
+import org.anddev.andengine.util.constants.TimeConstants;
 
 
 public class Ball extends AnimatedSprite {
 	float velocity = 100;
+	int i =0;
+	private Engine mEngine;
 	
-	public Ball(float positionX, float positionY, TiledTextureRegion positionTextureRegion) {
+	public Ball(float positionX, float positionY, TiledTextureRegion positionTextureRegion, Engine mEngine) {
 		super(positionX, positionY, positionTextureRegion);
+		this.mEngine = mEngine;
 	}
 
 	

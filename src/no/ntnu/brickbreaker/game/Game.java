@@ -20,6 +20,7 @@ import org.anddev.andengine.opengl.texture.TextureOptions;
 import org.anddev.andengine.opengl.texture.region.TextureRegionFactory;
 import org.anddev.andengine.opengl.texture.region.TiledTextureRegion;
 import org.anddev.andengine.ui.activity.BaseGameActivity;
+import org.anddev.andengine.util.constants.TimeConstants;
 
 import android.view.Display;
 
@@ -72,7 +73,7 @@ public class Game extends BaseGameActivity implements IOnSceneTouchListener{
 		scene.setBackground(new ColorBackground(0f, 0f, 0f));
 		scene.setOnSceneTouchListener(this);
 
-		final Ball ball = new Ball(CAMERA_WIDTH/2, CAMERA_HEIGHT-80, this.ballTextureRegion);
+		final Ball ball = new Ball(CAMERA_WIDTH/2, CAMERA_HEIGHT-80, this.ballTextureRegion, mEngine);
 		ball.setVelocity(100.0f, 100.0f);
 
 		scene.getTopLayer().addEntity(ball);
