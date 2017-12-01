@@ -11,7 +11,7 @@
 			android:layout_width="200px" 
 			android:layout_height="wrap_content">
 	</Button>
-	<Button android:text="Resume" 
+	<Button android:text="خلیل کلو" 
 			android:id="@+id/resumeButton" 
 			android:layout_width="200px" 
 			android:layout_height="wrap_content">
